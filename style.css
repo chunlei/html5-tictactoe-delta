@@ -1,0 +1,14 @@
+.grid {
+	width: 400px;
+	height: 100px;
+	display: block;
+}
+
+.col {
+	color: #fff;
+	width: 100px;
+	height: 100px;
+	background-color: #011892;
+	float: left;
+	margin: 2px;
+}
