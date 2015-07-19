@@ -18,6 +18,7 @@
     },
     player: 0,
   	board: [-1, -1, -1, -1, -1, -1, -1, -1, -1],
+  	m: [-1, -1, -1, -1, -1, -1, -1, -1],
     click: function(e) {
     	var t = this.$el.find(e.target);
 
@@ -39,9 +40,24 @@
     		this.board[no] = 1;
     	}
 
-    	this.player = (this.player + 1) % 2;
+    	// any winner ?
+		this.m[0] = this.board[0] + this.board[3] + this.board[6];
+		this.m[1] = this.board[1] + this.board[4] + this.board[7];
+		this.m[2] = this.board[2] + this.board[5] + this.board[8];
+		this.m[3] = this.board[4] + this.board[6] + this.board[8];
+		this.m[4] = this.board[3] + this.board[4] + this.board[5];
+		this.m[5] = this.board[0] + this.board[1] + this.board[2];
+		this.m[6] = this.board[0] + this.board[4] + this.board[8];
+		this.m[7] = this.board[2] + this.board[4] + this.board[6];
+		
+		for (var i = 0; i < this.m.length; i++) {
+		  if (this.m[i] === 0 || this.m[i] === 3) {
+		  	alert('Winner: ' + this.player);
+		  }
+		}
 
-    	console.log(this.board);
+		// next player
+    	this.player = (this.player + 1) % 2;
     },
   });
 
